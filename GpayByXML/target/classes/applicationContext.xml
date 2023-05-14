@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="pid" class="com.masai.PaymentPresentation"> 
+		<property name="transactionservice" ref="tid"></property>		
+	</bean>
+	
+	<bean id="aid" class="com.masai.AccountDetailsDAO"/>
+	
+	<bean id="tid" class="com.masai.TransactionService"> 
+		<property name="accountDetailsdao" ref="aid"> </property>		
+	</bean>
+    
+ 
+</beans>
