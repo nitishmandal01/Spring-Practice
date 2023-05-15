@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="mb1" class="com.masai.Member"> 
+		<constructor-arg name="memberId" value="01"/>
+		<constructor-arg name="memberName" value="Nitish"/>
+		<constructor-arg name="age" value="21"/>
+		<constructor-arg name="membershipType" value="Gold"/>
+	</bean>
+	
+	 <bean id="mb2" class="com.masai.Member"> 
+		<constructor-arg name="memberId" value="02"/>
+		<constructor-arg name="memberName" value="Raman"/>
+		<constructor-arg name="age" value="22"/>
+		<constructor-arg name="membershipType" value="Silver"/>
+	</bean>
+	
+	 <bean id="mb3" class="com.masai.Member"> 
+		<constructor-arg name="memberId" value="03"/>
+		<constructor-arg name="memberName" value="Raghav"/>
+		<constructor-arg name="age" value="23"/>
+		<constructor-arg name="membershipType" value="Bronze"/>
+	</bean>
+	
+	<bean id="wp1" class="com.masai.WorkoutProgram"> 
+		<constructor-arg name="programId" value="1"/>
+		<constructor-arg name="programName" value="Hybrid"/>
+		<constructor-arg name="programDuration" value="27"/>
+	</bean>
+	
+	<bean id="wp2" class="com.masai.WorkoutProgram"> 
+		<constructor-arg name="programId" value="2"/>
+		<constructor-arg name="programName" value="UpperBody"/>
+		<constructor-arg name="programDuration" value="45"/>
+	</bean>
+	
+	<bean id="wp3" class="com.masai.WorkoutProgram"> 
+		<constructor-arg name="programId" value="3"/>
+		<constructor-arg name="programName" value="LowerBody"/>
+		<constructor-arg name="programDuration" value="60"/>
+	</bean>
+    
+    <bean id="gm" class="com.masai.GymManager" init-method="initialize" destroy-method="shutDown" lazy-init="true">
+		<property name="gymPrograms">
+			<map>
+				<entry key-ref="wp1" value-ref="mb1"/>
+				<entry key-ref="wp2" value-ref="mb2"/>
+				<entry key-ref="wp3" value-ref="mb3"/>
+			</map>
+			
+		</property>
+		
+	</bean>
+ 
+</beans>
